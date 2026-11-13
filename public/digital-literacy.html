@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Literacy Awareness Guide - EduBridge</title>
+  <meta name="description" content="Beginner-friendly digital literacy guide in English and Telugu for rural village students. Learn how to use internet, create email, and access online education safely.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .module-nav-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      position: sticky;
+      top: 80px;
+      background: var(--white);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      z-index: 100;
+    }
+    .mod-pill {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .mod-pill:hover {
+      background: var(--primary-100);
+      border-color: var(--primary-500);
+      color: var(--primary-800);
+    }
+    @media (max-width: 768px) {
+      .module-nav-strip {
+        position: static;
+        padding: 0.5rem;
+        gap: 0.35rem;
+      }
+      .mod-pill {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-notice-bar">
+    <div class="container">
+      <span class="project-title-badge">KEY RESEARCH MODULE</span>
+      <strong data-i18n="banner_notice">A STUDY ON DIGITAL EDUCATION AWARENESS IN RURAL VILLAGES</strong>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="brand-wrapper">
+        <a href="index.html" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+          <div class="brand-logo">EB</div>
+          <div class="brand-text">
+            <h1>Edu<span>Bridge</span></h1>
+            <p class="brand-tagline">Learn. Practice. Grow.</p>
+          </div>
+        </a>
+      </div>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="explore.html" class="nav-link" data-i18n="nav_explore">Explore Resources</a></li>
+          <li><a href="programming.html" class="nav-link" data-i18n="nav_programming">Programming</a></li>
+          <li><a href="coding-practice.html" class="nav-link" data-i18n="nav_coding">Coding Practice</a></li>
+          <li><a href="btech-subjects.html" class="nav-link" data-i18n="nav_btech">B.Tech Subjects</a></li>
+          <li><a href="free-courses.html" class="nav-link" data-i18n="nav_courses">Free Courses</a></li>
+          <li><a href="career-guidance.html" class="nav-link" data-i18n="nav_career">Career Guidance</a></li>
+          <li><a href="digital-literacy.html" class="nav-link active" data-i18n="nav_literacy">Digital Literacy</a></li>
+          <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-toggle-btn">🌐 తెలుగు (TE)</button>
+        <div id="navAuthActions">
+          <a href="login.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login / Register</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section style="background:linear-gradient(135deg, #eff6ff, #fff7ed); border-bottom:1px solid var(--gray-200); padding: 2.5rem 0 2rem;">
+    <div class="container">
+      <span class="section-tag">CORE RESEARCH OBJECTIVE</span>
+      <h1 style="font-size:2.25rem; font-weight:800; color:var(--gray-900); margin-bottom:0.5rem;">Digital Literacy Awareness Handbook</h1>
+      <p style="font-size:1.05rem; color:var(--gray-600); max-width:850px; line-height:1.6;">
+        A practical, step-by-step master guide tailored specifically for rural village students with limited prior computer experience. Understand how the internet works, how to study independently, and how to stay safe from online fraud.
+      </p>
+    </div>
+  </section>
+
+  <!-- Literacy Modules Navigation -->
+  <div class="container" style="margin-top:1.5rem;">
+    <div class="module-nav-strip">
+      <span style="font-size:0.8rem; font-weight:800; color:var(--primary-800); align-self:center; margin-right:0.5rem;">QUICK JUMP:</span>
+      <a href="#mod1" class="mod-pill">1. Digital Education</a>
+      <a href="#mod2" class="mod-pill">2. Using Internet</a>
+      <a href="#mod3" class="mod-pill">3. Effective Search</a>
+      <a href="#mod4" class="mod-pill">4. Create Email</a>
+      <a href="#mod5" class="mod-pill">5. Website Registration</a>
+      <a href="#mod6" class="mod-pill">6. Free Courses</a>
+      <a href="#mod7" class="mod-pill">7. Online Coding</a>
+      <a href="#mod8" class="mod-pill">8. Online Classes</a>
+      <a href="#mod9" class="mod-pill">9. Video Learning</a>
+      <a href="#mod10" class="mod-pill">10. Genuine vs Fake Sites</a>
+      <a href="#mod11" class="mod-pill">11. Cyber Safety & Privacy</a>
+    </div>
+  </div>
+
+  <!-- Main Literacy Guide (Prompt #9 - 11 Modules) -->
+  <main class="section" style="padding-top:1rem;">
+    <div class="container" style="max-width:960px;">
+
+      <!-- Module 1 -->
+      <article class="literacy-module-card" id="mod1">
+        <div class="module-header">
+          <div class="module-number">01</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 1</span>
+            <h3>Understanding Digital Education & Its Transformative Power</h3>
+          </div>
+        </div>
+        <p style="font-size:0.95rem; color:var(--gray-700); line-height:1.6;">
+          Digital education means using the internet, mobile smartphones, and computers to acquire knowledge, build skills, and earn certified qualifications without having to move to expensive cities. In the past, world-class teaching was restricted to metropolitan colleges. Today, any student in a village with a simple 4G smartphone has the same access to IIT professors and Silicon Valley engineers as an urban student.
+        </p>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: డిజిటల్ విద్య అంటే ఏమిటి?</h4>
+          <p>
+            గతంలో ఉత్తమ అధ్యాపకులు మరియు పుస్తకాలు కేవలం పెద్ద నగరాల్లోని ప్రముఖ కాలేజీలలో మాత్రమే ఉండేవి. నేడు ఇంటర్నెట్ మరియు స్మార్ట్‌ఫోన్ ద్వారా గ్రామంలో కూర్చునే ఐఐటి ప్రొఫెసర్లు మరియు ప్రపంచ స్థాయి కంపెనీల నిపుణుల నుండి ఉచితంగా చదువుకోవడాన్నే "డిజిటల్ విద్య" అంటారు. దీనికి లక్షల రూపాయల ఫీజులు చెల్లించాల్సిన అవసరం లేదు.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 2 -->
+      <article class="literacy-module-card" id="mod2">
+        <div class="module-header">
+          <div class="module-number">02</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 2</span>
+            <h3>How to Use the Internet for Education (and Save Mobile Data)</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Many students consume their daily 1.5 GB mobile data quota on social media short reels and gaming, leaving nothing for studies. Follow these golden rules for educational internet use:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Tip 1</span>
+            <p><strong>Set YouTube Video Quality to 360p or 480p:</strong> When watching lecture videos, 480p provides crisp blackboard reading while consuming 70% less data than 1080p high definition.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Tip 2</span>
+            <p><strong>Download PDFs and Notes During Off-Peak Hours:</strong> Download study material and syllabus books once so you can read them offline anytime without internet connectivity.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Tip 3</span>
+            <p><strong>Use Text-Based Platforms (W3Schools & GeeksforGeeks):</strong> Text-based coding tutorials consume almost zero mobile data compared to streaming videos.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: ఇంటర్నెట్ డేటాను పొదుపుగా చదువుకు ఎలా వాడాలి?</h4>
+          <p>
+            యూట్యూబ్‌లో లెక్చర్స్ చూసేటప్పుడు క్వాలిటీని 360p లేదా 480p కి మార్చండి. దీనివల్ల బోర్డు మీది అక్షరాలు స్పష్టంగా కనిపిస్తాయి మరియు మీ డైలీ డేటా త్వరగా అయిపోదు. రాత్రిపూట కావాల్సిన నోట్స్ PDF లను డౌన్‌లోడ్ చేసుకుని డేటా లేకుండా ఆఫ్‌లైన్‌లో చదువుకోవచ్చు.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 3 -->
+      <article class="literacy-module-card" id="mod3">
+        <div class="module-header">
+          <div class="module-number">03</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 3</span>
+            <h3>How to Search for Educational Information Effectively</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Google is the world's most powerful library, but asking vague questions yields confusing search results. Use specific query formulas:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Formula A</span>
+            <p><strong>Search Specific File Types:</strong> Add <code>filetype:pdf</code> at the end of your query (e.g., <code>Operating Systems memory management notes filetype:pdf</code>) to get university textbooks directly.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Formula B</span>
+            <p><strong>Target Reliable Portals:</strong> Add the platform name to your search (e.g., <code>binary search tree GeeksforGeeks</code> or <code>SQL joins W3Schools</code>).</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Formula C</span>
+            <p><strong>Find Solved Questions:</strong> Search <code>[subject name] previous year solved questions university</code> to find exact semester exam patterns.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: గూగుల్‌లో సరైన స్టడీ మెటీరియల్ ఎలా వెతకాలి?</h4>
+          <p>
+            గూగుల్‌లో కేవలం సబ్జెక్ట్ పేరు మాత్రమే కాకుండా, చివర <code>filetype:pdf</code> లేదా <code>GeeksforGeeks</code> అని జోడించండి. ఉదాహరణకు <code>Java OOPs concepts notes filetype:pdf</code> అని టైప్ చేస్తే కాలేజ్ ప్రొఫెసర్లు రాసిన అసలైన నోట్స్ మాత్రమే వస్తాయి.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 4 -->
+      <article class="literacy-module-card" id="mod4">
+        <div class="module-header">
+          <div class="module-number">04</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 4</span>
+            <h3>How to Create and Use a Professional Email Account</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Your email address is your official digital identity for all job applications, online certificates, and entrance examinations.
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Step 1</span>
+            <p><strong>Choose a Formal Username:</strong> Avoid informal names like <code>coolboyravi99@gmail.com</code>. Always use your full professional name: <code>ravikumar.cse@gmail.com</code> or <code>ravi.kothapalli2026@gmail.com</code>.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Step 2</span>
+            <p><strong>Write Down Your Password in a Safe Notebook:</strong> Never forget your password or email address. Keep a physical private diary at home.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Step 3</span>
+            <p><strong>Check Your Inbox and Spam Folder Daily:</strong> Course enrollments, certificate verification links, and interview call letters are sent to your email.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: ప్రొఫెషనల్ ఈమెయిల్ అకౌంట్ ఎలా సృష్టించాలి?</h4>
+          <p>
+            జాబ్స్ మరియు కాలేజ్ అప్లికేషన్ల కోసం మీ అసలు పేరుతో మాత్రమే ఈమెయిల్ ఉండాలి (ఉదా: <code>firstname.lastname@gmail.com</code>). మీ ఈమెయిల్ పాస్‌వర్డ్‌ను ఒక డైరీలో భద్రంగా రాసి పెట్టుకోండి. జాబ్ ఆఫర్లు లేదా సర్టిఫికెట్ల లింకులు ఈమెయిల్‌కే వస్తాయి కాబట్టి ప్రతిరోజూ ఇన్‌బాక్స్ చెక్ చేసుకోండి.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 5 -->
+      <article class="literacy-module-card" id="mod5">
+        <div class="module-header">
+          <div class="module-number">05</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 5</span>
+            <h3>How to Register on Learning Websites Safely</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Registering on platforms like HackerRank, Coursera, or NPTEL takes less than 2 minutes. Follow this standard sequence:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Step 1</span>
+            <p>Look for the <strong>"Sign Up"</strong> or <strong>"Register"</strong> button in the top right corner of the website.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Step 2</span>
+            <p>Click <strong>"Continue with Google"</strong> if available. This logs you in securely in 1-click using your Gmail without remembering extra passwords.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Step 3</span>
+            <p>If prompted for payment/credit card details, <strong>STOP</strong>. Genuine free platforms (like IBM SkillsBuild, Infosys Springboard, freeCodeCamp) NEVER ask for bank details.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: వెబ్‌సైట్లలో సురక్షితంగా ఎలా రిజిస్టర్ అవ్వాలి?</h4>
+          <p>
+            సైట్‌లో "Continue with Google" ఆప్షన్ ఉంటే దానిపై క్లిక్ చేయడం ద్వారా మీ జీమెయిల్‌తో నేరుగా లాగిన్ అవ్వచ్చు. ఏ విద్యా వెబ్‌సైట్ అయినా బ్యాంక్ ఎటిఎమ్ పిన్ లేదా క్రెడిట్ కార్డ్ వివరాలు అడిగితే వెంటనే ఆ పేజీని మూసివేయండి.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 6 -->
+      <article class="literacy-module-card" id="mod6">
+        <div class="module-header">
+          <div class="module-number">06</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 6</span>
+            <h3>How to Access Free Online Courses (NPTEL, SWAYAM, Coursera)</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Many students see a price tag on Coursera or edX and leave, unaware of the completely free legal methods available:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Coursera Free</span>
+            <p><strong>Click "Audit the Course":</strong> On any course page, click "Enroll", then look for small text near the bottom that says <em>"Audit the course"</em>. This unlocks all videos, readings, and lecture notes for ₹0.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Financial Aid</span>
+            <p><strong>Coursera Financial Aid:</strong> Click "Financial Aid Available" next to Enroll. State your background as a rural college student and your commitment to learn; aid is routinely approved within 15 days, providing 100% free certificates.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">SWAYAM / NPTEL</span>
+            <p><strong>Govt. of India Platform:</strong> Register using your Google account on swayam.gov.in. All courses by IIT Madras, IIT Bombay, and IISc are 100% free to learn.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: ఉచితంగా ఆన్‌లైన్ కోర్సులు ఎలా పొందాలి?</h4>
+          <p>
+            కోర్సెరా (Coursera) లో డబ్బులు అడిగినప్పుడు భయపడకండి. "Audit Course" అనే ఆప్షన్ ఎంచుకుంటే అన్ని వీడియోలు ఉచితంగా చూడవచ్చు. లేదా "Financial Aid" కు అప్లై చేస్తే గ్రామీణ విద్యార్థులకు ఉచిత సర్టిఫికెట్ మంజూరు చేస్తారు.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 7 -->
+      <article class="literacy-module-card" id="mod7">
+        <div class="module-header">
+          <div class="module-number">07</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 7</span>
+            <h3>How to Learn Programming Online (Without an Expensive Laptop)</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          One of the biggest misconceptions in rural colleges is that you cannot learn programming without an expensive ₹50,000 laptop. This is completely false today:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Method 1</span>
+            <p><strong>Use In-Browser Compilers (Replit / Programiz / W3Schools):</strong> Open your smartphone browser (Chrome), visit <code>programiz.com/python-programming/online-compiler</code>, type code, and press "Run". It executes instantly on their cloud servers.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Method 2</span>
+            <p><strong>Connect a ₹300 USB Keyboard to Your Smartphone:</strong> Using a ₹30 OTG adapter, you can plug any physical computer keyboard directly into your mobile phone to practice typing code fast.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Method 3</span>
+            <p><strong>Mobile Apps for Coding:</strong> Download free apps like "Pydroid 3" (for Python) or "Coding C" from Google Play Store to run code completely offline without internet.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: ల్యాప్‌టాప్ లేకుండా మొబైల్ ఫోన్‌లోనే కోడింగ్ ఎలా నేర్చుకోవాలి?</h4>
+          <p>
+            కోడింగ్ నేర్చుకోవడానికి ఖరీదైన కంప్యూటర్ అవసరం లేదు. మీ మొబైల్ బ్రౌజర్‌లో <strong>Replit</strong> లేదా <strong>Programiz Online Compiler</strong> ఓపెన్ చేసి కోడ్ రన్ చేసుకోవచ్చు. కేవలం ₹30 OTG అడాప్టర్‌తో సాధారణ కీబోర్డును మొబైల్‌కు తగిలించి సులభంగా టైపింగ్ ప్రాక్టీస్ చేయవచ్చు.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 8 -->
+      <article class="literacy-module-card" id="mod8">
+        <div class="module-header">
+          <div class="module-number">08</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 8</span>
+            <h3>How to Attend Online Classes & Webinars Professionally</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Attending live sessions on Google Meet, Zoom, or YouTube Live requires simple digital etiquette:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Rule 1</span>
+            <p><strong>Keep Your Microphone on MUTE by Default:</strong> Only unmute when the instructor calls your name to ask a question, avoiding village background noise.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Rule 2</span>
+            <p><strong>Use the Chat Box for Questions:</strong> Type polite, concise questions in the live chat rather than interrupting the lecture audio.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Rule 3</span>
+            <p><strong>Sit Facing Light:</strong> If turning your webcam on, ensure light is in front of your face (not behind you against a bright window).</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: ఆన్‌లైన్ క్లాసులు వినేటప్పుడు పాటించాల్సిన నియమాలు:</h4>
+          <p>
+            క్లాసులోకి ప్రవేశించగానే మీ మైక్రోఫోన్ మ్యూట్ (Mute) లో ఉండేలా చూసుకోండి. డౌట్స్ అడగడానికి చాట్ బాక్స్‌ను ఉపయోగించండి. స్థిరమైన ఇంటర్నెట్ వచ్చే గదిలో కూర్చోండి.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 9 -->
+      <article class="literacy-module-card" id="mod9">
+        <div class="module-header">
+          <div class="module-number">09</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 9</span>
+            <h3>How to Use Educational Videos Effectively</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Watching educational videos is active study, not movie entertainment. Utilize these built-in video player controls:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Playback Speed</span>
+            <p><strong>Adjust Speed to 1.25x or 1.5x:</strong> For revision, adjust playback speed to save 20-30% of your time. Slow down to 0.75x if the teacher speaks unfamiliar fast English.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Subtitles (CC)</span>
+            <p><strong>Turn on Closed Captions [CC]:</strong> Reading English subtitles while listening dramatically improves technical vocabulary and English comprehension.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">The Pause-and-Code Rule</span>
+            <p>Whenever the instructor writes code or a math formula, pause the video and write it down in your notebook or run it in your browser before continuing.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: వీడియో లెక్చర్స్ ద్వారా చదువుకునే సరైన పద్ధతి:</h4>
+          <p>
+            ఇంగ్లీష్ అర్థం కావడం కష్టంగా ఉంటే వీడియో కింద ఉన్న [CC] (సబ్‌టైటిల్స్) ఆన్ చేసుకోండి. వింటూ చదవడం వల్ల ఇంగ్లీష్ సులభంగా అర్థమవుతుంది. వీడియో నడుస్తున్నప్పుడు పాజ్ చేసి, ఉపాధ్యాయుడు చెప్పిన నోట్స్ రాసుకుంటూ ఉండాలి.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 10 -->
+      <article class="literacy-module-card" id="mod10">
+        <div class="module-header">
+          <div class="module-number">10</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 10</span>
+            <h3>How to Identify Genuine vs Fake Educational Websites</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Rural students are frequently targeted by scam websites promising guaranteed government jobs or degrees in exchange for money.
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Check 1</span>
+            <p><strong>Domain Extension:</strong> Genuine Indian govt educational sites end in <code>.ac.in</code> or <code>.gov.in</code> (e.g., <code>nptel.ac.in</code>, <code>swayam.gov.in</code>). Avoid unknown <code>.xyz</code>, <code>.top</code>, or suspicious free domains.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Check 2</span>
+            <p><strong>Padlock Security Icon (HTTPS):</strong> Look for <code>https://</code> in the address bar. A missing padlock indicates insecure connections.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Check 3</span>
+            <p><strong>Job Promises:</strong> Legitimate platforms (like HackerRank, Coursera, IBM) never guarantee a 100% job in exchange for upfront money.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: అసలైన వెబ్‌సైట్లు మరియు మోసపూరిత సైట్లను ఎలా గుర్తించాలి?</h4>
+          <p>
+            భారత ప్రభుత్వ అధికారిక విద్యా వెబ్‌సైట్లు ఎల్లప్పుడూ <code>.gov.in</code> లేదా <code>.ac.in</code> తో ముగుస్తాయి. డబ్బులు కడితే ఉద్యోగం ఇస్తామని చెప్పే నకిలీ సైట్లను నమ్మకండి. EduBridge లోని అన్ని లింకులు ధృవీకరించబడిన అసలైన అధికారిక సైట్లు మాత్రమే.
+          </p>
+        </div>
+      </article>
+
+      <!-- Module 11 -->
+      <article class="literacy-module-card" id="mod11">
+        <div class="module-header">
+          <div class="module-number">11</div>
+          <div class="module-title-box">
+            <span class="badge badge-free">Module 11</span>
+            <h3>Basic Online Safety, Passwords & Privacy Awareness</h3>
+          </div>
+        </div>
+        <p style="font-size:0.92rem; color:var(--gray-700); line-height:1.6;">
+          Protect your personal identity, bank accounts, and educational profiles with these fundamental cyber hygiene rules:
+        </p>
+        <div class="module-steps-list">
+          <div class="module-step-item">
+            <span class="step-badge">Rule 1</span>
+            <p><strong>NEVER Share OTPs:</strong> No educational platform, bank, or government official will ever call asking for your One Time Password (OTP). Never read OTPs over phone calls.</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Rule 2</span>
+            <p><strong>Use Strong Passwords:</strong> Avoid simple passwords like your birthdate or phone number. Combine uppercase letters, lowercase, numbers, and symbols (e.g., <code>Study@Bridge2026!</code>).</p>
+          </div>
+          <div class="module-step-item">
+            <span class="step-badge">Rule 3</span>
+            <p><strong>Log Out of Public Internet Cafes:</strong> When using computers in a village browsing center or college lab, always log out of your Gmail and close the browser completely.</p>
+          </div>
+        </div>
+        <div class="telugu-explanation-box">
+          <h4>📖 తెలుగు వివరణ: ఆన్‌లైన్ భద్రత మరియు పాస్‌వర్డ్ గోప్యత:</h4>
+          <p>
+            మీ ఫోన్‌కు వచ్చే OTP (వన్ టైమ్ పాస్‌వర్డ్) ఎవ్వరికీ ఫోన్‌లో చెప్పకండి. నెట్ సెంటర్‌లో కంప్యూటర్ వాడినప్పుడు ఖచ్చితంగా జీమెయిల్ నుండి లాగౌట్ (Logout) అవ్వండి. మీ పుట్టినరోజు లేదా ఫోన్ నంబర్‌ను పాస్‌వర్డ్‌గా పెట్టుకోకండి.
+          </p>
+        </div>
+      </article>
+
+      <div style="text-align:center; margin:3rem 0;">
+        <a href="explore.html" class="btn btn-primary btn-lg">Now Explore Free Educational Platforms ➔</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p data-i18n="footer_rights">
+          EduBridge - Developed for "A Study on Digital Education Awareness in Rural Villages". All external educational platform names, trademarks, and logos belong to their respective organizations.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

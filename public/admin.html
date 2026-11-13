@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrator Dashboard - EduBridge</title>
+  <meta name="description" content="EduBridge Administrator Portal for managing educational platforms, categories, and student suggestions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-notice-bar" style="background:#0f172a;">
+    <div class="container">
+      <span class="project-title-badge" style="background:#dc2626;">ADMINISTRATOR PORTAL</span>
+      <strong>EduBridge Central Management Console</strong>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="brand-wrapper">
+        <a href="index.html" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+          <div class="brand-logo" style="background:linear-gradient(135deg, #0f172a, #2563eb);">EB</div>
+          <div class="brand-text">
+            <h1>Edu<span>Bridge</span> <span style="font-size:0.75rem; background:#fee2e2; color:#b91c1c; padding:0.15rem 0.45rem; border-radius:4px;">ADMIN</span></h1>
+            <p class="brand-tagline">Rural Education Awareness Administration</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline btn-sm">➔ View Public Site</a>
+        <button onclick="EduAuth.logout()" class="btn btn-sm" style="background:#fee2e2; color:#b91c1c; border-color:#fca5a5;">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main -->
+  <main class="section" style="padding-top:2rem;">
+    <div class="container">
+
+      <!-- Header & Action Bar -->
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:2rem;">
+        <div>
+          <h2 style="font-size:1.85rem; font-weight:800; color:var(--gray-900);">Resource Management Console</h2>
+          <p style="font-size:0.92rem; color:var(--gray-600);">Oversee verified platforms, bilingual content, and rural student requests.</p>
+        </div>
+        <button onclick="EduAdmin.openAddModal()" class="btn btn-primary btn-lg">
+          + Add New Educational Website
+        </button>
+      </div>
+
+      <!-- Admin Analytics Strip -->
+      <div class="admin-stats-grid">
+        <div class="dash-stat-card blue" style="padding:1rem;">
+          <div class="dash-stat-content">
+            <h4 id="statTotalResources" style="font-size:1.5rem;">0</h4>
+            <p style="font-size:0.75rem;">Total Platforms</p>
+          </div>
+        </div>
+        <div class="dash-stat-card green" style="padding:1rem;">
+          <div class="dash-stat-content">
+            <h4 id="statTotalUsers" style="font-size:1.5rem;">0</h4>
+            <p style="font-size:0.75rem;">Registered Students</p>
+          </div>
+        </div>
+        <div class="dash-stat-card orange" style="padding:1rem;">
+          <div class="dash-stat-content">
+            <h4 id="statTotalVisits" style="font-size:1.5rem;">0</h4>
+            <p style="font-size:0.75rem;">Platform Redirects</p>
+          </div>
+        </div>
+        <div class="dash-stat-card blue" style="padding:1rem;">
+          <div class="dash-stat-content">
+            <h4 id="statTotalFeedback" style="font-size:1.5rem;">0</h4>
+            <p style="font-size:0.75rem;">Student Feedback</p>
+          </div>
+        </div>
+        <div class="dash-stat-card orange" style="padding:1rem;">
+          <div class="dash-stat-content">
+            <h4 id="statPendingFeedback" style="font-size:1.5rem; color:#dc2626;">0</h4>
+            <p style="font-size:0.75rem;">Pending Reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resource Table Controls -->
+      <div style="background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:3rem; box-shadow:var(--shadow-sm);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
+          <h3 style="font-size:1.25rem; font-weight:800; color:var(--gray-900);">Educational Resources Directory</h3>
+
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <input type="text" id="adminSearchInput" placeholder="Filter by name..." class="form-control" style="width:200px;" oninput="EduAdmin.loadResources()">
+            <select id="adminCategoryFilter" class="form-control" style="width:180px;" onchange="EduAdmin.loadResources()">
+              <option value="all">All Categories</option>
+              <option value="programming">Programming</option>
+              <option value="coding_practice">Coding Practice</option>
+              <option value="btech_subjects">B.Tech Subjects</option>
+              <option value="free_courses">Free Courses</option>
+              <option value="aptitude">Aptitude</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:60px;">ID</th>
+                <th>Platform & Website URL</th>
+                <th>Category</th>
+                <th>Level</th>
+                <th>Pricing</th>
+                <th style="width:120px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="resourcesTableBody">
+              <!-- Loaded by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Student Feedback & Suggestions Section (Prompt #13 & #14) -->
+      <div style="background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:1.5rem; box-shadow:var(--shadow-sm);">
+        <h3 style="font-size:1.25rem; font-weight:800; color:var(--gray-900); margin-bottom:0.25rem;">Student Suggestions & Broken Link Reports</h3>
+        <p style="font-size:0.85rem; color:var(--gray-600); margin-bottom:1.25rem;">Review submissions submitted by rural students and update resolution status.</p>
+
+        <div class="admin-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">ID</th>
+                <th>Type & Title</th>
+                <th>Student</th>
+                <th>Message / Details</th>
+                <th>Status</th>
+                <th style="width:130px;">Update Status</th>
+              </tr>
+            </thead>
+            <tbody id="feedbackTableBody">
+              <!-- Loaded by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add / Edit Resource Modal Form -->
+  <div class="modal-overlay" id="resourceModal">
+    <div class="modal-content" style="max-width:720px;">
+      <button class="modal-close-btn" onclick="EduAdmin.closeModal()">✕</button>
+      <h3 id="resourceModalTitle" style="font-size:1.35rem; font-weight:800; margin-bottom:1.25rem;">Add Educational Resource</h3>
+
+      <form id="resourceForm" onsubmit="EduAdmin.handleResourceSubmit(event)">
+        <input type="hidden" id="resIdInput">
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Platform Name *</label>
+            <input type="text" id="resName" class="form-control" placeholder="e.g. GeeksforGeeks" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Official Website URL *</label>
+            <input type="url" id="resUrl" class="form-control" placeholder="https://www.example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="resCategory" class="form-control" required>
+              <option value="programming">Programming Learning</option>
+              <option value="coding_practice">Coding Practice</option>
+              <option value="btech_subjects">B.Tech Subjects</option>
+              <option value="free_courses">Free Online Courses</option>
+              <option value="aptitude">Aptitude & Reasoning</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Skill Level</label>
+            <select id="resSkillLevel" class="form-control">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="All Levels">All Levels</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pricing Tier</label>
+            <select id="resPricing" class="form-control">
+              <option value="100% Free">100% Free</option>
+              <option value="100% Free Learning">100% Free Learning</option>
+              <option value="Free Audit / Paid Certificate">Free Audit</option>
+              <option value="Freemium">Freemium</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Subcategories / Tags (comma separated)</label>
+          <input type="text" id="resSubcategories" class="form-control" placeholder="e.g. Python, Data Structures, Web Development">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Pricing Details / Certification Note</label>
+          <input type="text" id="resPricingDetails" class="form-control" placeholder="e.g. Free video lectures, optional paid exam certificate">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">English Description *</label>
+          <textarea id="resDescription" class="form-control" rows="3" required placeholder="Clear explanation of what the student will learn..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Telugu Description (తెలుగు వివరణ)</label>
+          <textarea id="resTeluguDescription" class="form-control" rows="2" placeholder="గ్రామీణ విద్యార్థుల కోసం సరళమైన తెలుగు వివరణ..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Supported Key Topics (comma separated)</label>
+          <input type="text" id="resSupportedTopics" class="form-control" placeholder="e.g. Interactive IDE, 30 Days of Code, Practice Badges">
+        </div>
+
+        <div class="form-group" style="display:flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox" id="resFeatured" style="width:18px; height:18px; accent-color:var(--primary-600);">
+          <label for="resFeatured" style="font-size:0.9rem; font-weight:600; cursor:pointer;">Feature on EduBridge Homepage</label>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1.5rem;">
+          <button type="button" onclick="EduAdmin.closeModal()" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Platform</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="padding:2rem 0; margin-top:4rem;">
+    <div class="container text-center" style="font-size:0.8rem; color:#64748b; text-align:center;">
+      EduBridge Administration • "A Study on Digital Education Awareness in Rural Villages"
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
