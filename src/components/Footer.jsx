@@ -27,7 +27,7 @@ export default function Footer({ setActiveTab }) {
 
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-teal-300 font-medium">
               <Award className="w-3.5 h-3.5 text-teal-400" />
-              <span>B.Tech Information Technology Project Capstone</span>
+              <span>B.Tech Information Technology Project Capstone • Batch_22</span>
             </div>
 
             <div className="flex items-center gap-4 text-xs text-slate-400 pt-2">
@@ -144,7 +144,7 @@ export default function Footer({ setActiveTab }) {
 
         {/* Bottom Bar & Disclaimer */}
         <div className="pt-8 mt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} SmartHealth Pro. Final Year B.Tech IT Project Demonstration.</p>
+          <p>© {new Date().getFullYear()} SmartHealth Pro (Batch_22). Final Year B.Tech IT Project Demonstration.</p>
           
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1 text-slate-400">

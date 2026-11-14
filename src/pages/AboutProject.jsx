@@ -78,7 +78,7 @@ export default function AboutProject({ setActiveTab }) {
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 backdrop-blur-md text-teal-300 border border-white/20">
             <Award className="w-4 h-4 text-teal-300" />
-            <span>B.Tech Information Technology • Final Year Project Capstone</span>
+            <span>B.Tech Information Technology • Final Year Project Capstone (Batch_22)</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">

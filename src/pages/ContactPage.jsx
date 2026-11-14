@@ -53,7 +53,7 @@ export default function ContactPage({ onNotify }) {
 
   const teamMembers = [
     {
-      name: "B.Tech IT Project Team",
+      name: "B.Tech IT Project Team (Batch_22)",
       role: "Lead Developers & Telehealth Researchers",
       dept: "Department of Information Technology",
       details: "Design, Frontend Architecture & Sensor Simulation Engine"
@@ -86,7 +86,7 @@ export default function ContactPage({ onNotify }) {
 
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
           <GraduationCap className="w-4 h-4 text-teal-600" />
-          <span>Final Year Project Presentation Ready</span>
+          <span>Final Year Project Presentation Ready • Batch_22</span>
         </div>
       </div>
 
@@ -214,7 +214,7 @@ export default function ContactPage({ onNotify }) {
             <div className="space-y-2 text-xs text-slate-600">
               <p><strong>Department:</strong> Department of Information Technology</p>
               <p><strong>Degree Program:</strong> Bachelor of Technology (B.Tech IT)</p>
-              <p><strong>Academic Year:</strong> Final Year Capstone Presentation</p>
+              <p><strong>Academic Batch:</strong> Batch_22 (Final Year Capstone)</p>
               <p><strong>Architecture:</strong> Single-Page Application (React.js + Tailwind CSS + Recharts)</p>
             </div>
           </div>

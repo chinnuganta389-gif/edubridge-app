@@ -94,7 +94,7 @@ export default function HomePage({ setActiveTab, vitals, patient, medicines }) {
                 <Sparkles className="w-4 h-4 text-teal-500" />
                 <span>Next-Gen IoT Healthcare & Telemetry Ecosystem</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
-                <span className="text-slate-500 font-normal">B.Tech IT Project</span>
+                <span className="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 font-bold text-xs">Batch_22</span>
               </div>
 
               {/* Exact Requested Heading & Subtitle */}

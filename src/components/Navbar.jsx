@@ -65,9 +65,12 @@ export default function Navbar({
                 <span className="px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-teal-100 text-teal-700 rounded-md">
                   Pro
                 </span>
+                <span className="px-1.5 py-0.5 text-[10px] font-extrabold tracking-wider bg-sky-100 text-sky-800 rounded-md border border-sky-200">
+                  Batch_22
+                </span>
               </div>
               <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
-                IoT Vitals & Medication Adherence
+                IoT Vitals & Medication Adherence • Batch_22
               </p>
             </div>
           </div>
