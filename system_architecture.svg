@@ -11,71 +11,66 @@
   </defs>
 
   <!-- Slide Title -->
-  <text x="100" y="140" font-size="42" font-weight="bold" fill="#1e3a8a">System Architecture</text>
+  <text x="120" y="145" font-size="44" font-weight="bold" fill="#1e3a8a">System Architecture</text>
 
   <!-- ================= COLUMN 1: USERS ================= -->
   <!-- Box 1: Rural Student -->
-  <rect x="120" y="370" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.2" rx="8" filter="url(#cardShadow)"/>
-  <text x="260" y="425" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Rural Student</text>
-  <text x="260" y="468" font-size="18" fill="#334155" text-anchor="middle">Phone or PC</text>
-  <text x="260" y="495" font-size="18" fill="#334155" text-anchor="middle">browser</text>
+  <rect x="120" y="370" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.4" rx="8" filter="url(#cardShadow)"/>
+  <text x="260" y="430" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Rural Student</text>
+  <text x="260" y="475" font-size="18" fill="#334155" text-anchor="middle">Phone or PC</text>
+  <text x="260" y="502" font-size="18" fill="#334155" text-anchor="middle">browser</text>
 
   <!-- Box 2: Administrator -->
-  <rect x="120" y="570" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.2" rx="8" filter="url(#cardShadow)"/>
-  <text x="260" y="628" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Administrator</text>
-  <text x="260" y="670" font-size="18" fill="#334155" text-anchor="middle">Login</text>
-  <text x="260" y="697" font-size="18" fill="#334155" text-anchor="middle">required</text>
+  <rect x="120" y="570" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.4" rx="8" filter="url(#cardShadow)"/>
+  <text x="260" y="630" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Administrator</text>
+  <text x="260" y="675" font-size="18" fill="#334155" text-anchor="middle">Login</text>
+  <text x="260" y="702" font-size="18" fill="#334155" text-anchor="middle">required</text>
 
   <!-- ================= COLUMN 2: FRONTEND ================= -->
   <!-- Box 3: Frontend -->
-  <rect x="510" y="330" width="350" height="430" fill="#ffffff" stroke="#2563eb" stroke-width="2.2" rx="8" filter="url(#cardShadow)"/>
-  <text x="685" y="380" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle">Frontend</text>
-  <text x="685" y="415" font-size="17" font-weight="bold" fill="#2563eb" text-anchor="middle">public/index.html</text>
-  <text x="685" y="460" font-size="17" fill="#334155" text-anchor="middle">Single-page app with</text>
-  <text x="685" y="490" font-size="17" fill="#334155" text-anchor="middle">sections: Explore,</text>
-  <text x="685" y="520" font-size="17" fill="#334155" text-anchor="middle">Programming, Practice,</text>
-  <text x="685" y="550" font-size="17" fill="#334155" text-anchor="middle">B.Tech Hub, Digital</text>
-  <text x="685" y="580" font-size="17" fill="#334155" text-anchor="middle">Literacy, Dashboard,</text>
-  <text x="685" y="610" font-size="17" fill="#334155" text-anchor="middle">Admin</text>
+  <rect x="520" y="340" width="340" height="400" fill="#ffffff" stroke="#2563eb" stroke-width="2.4" rx="8" filter="url(#cardShadow)"/>
+  <text x="690" y="415" font-size="26" font-weight="bold" fill="#0f172a" text-anchor="middle">Frontend</text>
+  <text x="690" y="455" font-size="19" font-weight="bold" fill="#2563eb" text-anchor="middle">public/</text>
+  <text x="690" y="520" font-size="18" fill="#334155" text-anchor="middle">HTML5, CSS3, JS</text>
+  <text x="690" y="575" font-size="18" fill="#334155" text-anchor="middle">Bilingual Web Portal</text>
+  <text x="690" y="605" font-size="18" fill="#334155" text-anchor="middle">(Telugu &amp; English)</text>
 
   <!-- ================= COLUMN 3: BACKEND REST API ================= -->
   <!-- Box 4: Express REST API -->
-  <rect x="980" y="330" width="350" height="430" fill="#ffffff" stroke="#2563eb" stroke-width="2.2" rx="8" filter="url(#cardShadow)"/>
-  <text x="1155" y="380" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle">Express REST API</text>
-  <text x="1155" y="415" font-size="17" font-weight="bold" fill="#2563eb" text-anchor="middle">server.js</text>
-  <text x="1155" y="475" font-size="17" fill="#334155" text-anchor="middle">Auth, resources,</text>
-  <text x="1155" y="505" font-size="17" fill="#334155" text-anchor="middle">bookmarks, visits,</text>
-  <text x="1155" y="535" font-size="17" fill="#334155" text-anchor="middle">telemetry, and admin</text>
-  <text x="1155" y="565" font-size="17" fill="#334155" text-anchor="middle">endpoints</text>
-  <text x="1155" y="595" font-size="17" fill="#334155" text-anchor="middle">with validation</text>
+  <rect x="980" y="340" width="340" height="400" fill="#ffffff" stroke="#2563eb" stroke-width="2.4" rx="8" filter="url(#cardShadow)"/>
+  <text x="1150" y="415" font-size="26" font-weight="bold" fill="#0f172a" text-anchor="middle">Express REST API</text>
+  <text x="1150" y="455" font-size="19" font-weight="bold" fill="#2563eb" text-anchor="middle">server.js</text>
+  <text x="1150" y="520" font-size="18" fill="#334155" text-anchor="middle">Node.js Backend</text>
+  <text x="1150" y="575" font-size="18" fill="#334155" text-anchor="middle">Auth, Resources &amp;</text>
+  <text x="1150" y="605" font-size="18" fill="#334155" text-anchor="middle">Admin APIs</text>
 
   <!-- ================= COLUMN 4: DATABASE & STORAGE ================= -->
   <!-- Box 5: SQLite -->
-  <rect x="1450" y="370" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.2" rx="8" filter="url(#cardShadow)"/>
-  <text x="1590" y="435" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite</text>
-  <text x="1590" y="475" font-size="18" fill="#334155" text-anchor="middle">edubridge.db</text>
+  <rect x="1440" y="370" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.4" rx="8" filter="url(#cardShadow)"/>
+  <text x="1580" y="430" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite</text>
+  <text x="1580" y="470" font-size="18" font-weight="bold" fill="#2563eb" text-anchor="middle">edubridge.db</text>
+  <text x="1580" y="498" font-size="16" fill="#334155" text-anchor="middle">Database</text>
 
   <!-- Box 6: Target Portals -->
-  <rect x="1450" y="570" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.2" rx="8" filter="url(#cardShadow)"/>
-  <text x="1590" y="618" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Target Portals</text>
-  <text x="1590" y="652" font-size="16" fill="#334155" text-anchor="middle">Verified platforms:</text>
-  <text x="1590" y="678" font-size="16" fill="#334155" text-anchor="middle">W3Schools, NPTEL,</text>
-  <text x="1590" y="702" font-size="16" fill="#334155" text-anchor="middle">LeetCode, Compilers</text>
+  <rect x="1440" y="570" width="280" height="150" fill="#ffffff" stroke="#475569" stroke-width="2.4" rx="8" filter="url(#cardShadow)"/>
+  <text x="1580" y="630" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Target Portals</text>
+  <text x="1580" y="675" font-size="17" fill="#334155" text-anchor="middle">Free Educational</text>
+  <text x="1580" y="702" font-size="17" fill="#334155" text-anchor="middle">Platforms</text>
 
   <!-- ================= CONNECTING ARROWS ================= -->
   <!-- Arrow 1: Rural Student -> Frontend -->
-  <line x1="400" y1="445" x2="505" y2="490" stroke="#475569" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="400" y1="445" x2="515" y2="490" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
 
   <!-- Arrow 2: Administrator -> Frontend -->
-  <line x1="400" y1="645" x2="505" y2="600" stroke="#475569" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="400" y1="645" x2="515" y2="590" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
 
   <!-- Arrow 3: Frontend -> Express REST API -->
-  <line x1="860" y1="545" x2="975" y2="545" stroke="#475569" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="860" y1="540" x2="975" y2="540" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
 
   <!-- Arrow 4: Express REST API -> SQLite -->
-  <line x1="1330" y1="490" x2="1445" y2="445" stroke="#475569" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="490" x2="1435" y2="445" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
 
   <!-- Arrow 5: Express REST API -> Target Portals -->
-  <line x1="1330" y1="600" x2="1445" y2="645" stroke="#475569" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="590" x2="1435" y2="645" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
 
 </svg>
