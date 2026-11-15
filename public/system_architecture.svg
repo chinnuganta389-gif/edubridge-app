@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" style="background:#0e2826; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e2826"/>
+      <stop offset="50%" stop-color="#143733"/>
+      <stop offset="100%" stop-color="#1a4841"/>
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle center glow -->
+  <circle cx="1100" cy="540" r="450" fill="#2d786e" opacity="0.12"/>
+
+  <!-- Top-Right Red Accent Bookmark Tab -->
+  <rect x="1680" y="0" width="75" height="140" fill="#af1a1a"/>
+
+  <!-- Slide Title -->
+  <text x="100" y="140" font-size="44" font-weight="bold" fill="#f0c438">System Architecture</text>
+
+  <!-- ================= COLUMN 1: USERS ================= -->
+  <!-- Box 1: Rural Student -->
+  <rect x="120" y="370" width="280" height="150" fill="#0c201e" fill-opacity="0.8" stroke="#7d3434" stroke-width="2.2" rx="4"/>
+  <text x="260" y="425" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">Rural Student</text>
+  <text x="260" y="465" font-size="18" fill="#e2e8f0" text-anchor="middle">Phone or PC</text>
+  <text x="260" y="492" font-size="18" fill="#e2e8f0" text-anchor="middle">browser</text>
+
+  <!-- Box 2: Administrator -->
+  <rect x="120" y="570" width="280" height="150" fill="#0c201e" fill-opacity="0.8" stroke="#7d3434" stroke-width="2.2" rx="4"/>
+  <text x="260" y="628" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">Administrator</text>
+  <text x="260" y="668" font-size="18" fill="#e2e8f0" text-anchor="middle">Login</text>
+  <text x="260" y="695" font-size="18" fill="#e2e8f0" text-anchor="middle">required</text>
+
+  <!-- ================= COLUMN 2: FRONTEND ================= -->
+  <!-- Box 3: Frontend -->
+  <rect x="510" y="330" width="350" height="430" fill="#0c201e" fill-opacity="0.8" stroke="#7d3434" stroke-width="2.2" rx="4"/>
+  <text x="685" y="380" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Frontend</text>
+  <text x="685" y="415" font-size="18" fill="#cbd5e1" text-anchor="middle">public/index.html</text>
+  <text x="685" y="460" font-size="17" fill="#e2e8f0" text-anchor="middle">Single-page app with</text>
+  <text x="685" y="490" font-size="17" fill="#e2e8f0" text-anchor="middle">sections: Explore,</text>
+  <text x="685" y="520" font-size="17" fill="#e2e8f0" text-anchor="middle">Programming, Practice,</text>
+  <text x="685" y="550" font-size="17" fill="#e2e8f0" text-anchor="middle">B.Tech Hub, Digital</text>
+  <text x="685" y="580" font-size="17" fill="#e2e8f0" text-anchor="middle">Literacy, Dashboard,</text>
+  <text x="685" y="610" font-size="17" fill="#e2e8f0" text-anchor="middle">Admin</text>
+
+  <!-- ================= COLUMN 3: BACKEND REST API ================= -->
+  <!-- Box 4: Express REST API -->
+  <rect x="980" y="330" width="350" height="430" fill="#0c201e" fill-opacity="0.8" stroke="#7d3434" stroke-width="2.2" rx="4"/>
+  <text x="1155" y="375" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Express REST</text>
+  <text x="1155" y="405" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">API</text>
+  <text x="1155" y="445" font-size="18" fill="#cbd5e1" text-anchor="middle">server.js</text>
+  <text x="1155" y="490" font-size="17" fill="#e2e8f0" text-anchor="middle">Auth, resources,</text>
+  <text x="1155" y="520" font-size="17" fill="#e2e8f0" text-anchor="middle">bookmarks, visits,</text>
+  <text x="1155" y="550" font-size="17" fill="#e2e8f0" text-anchor="middle">telemetry, and admin</text>
+  <text x="1155" y="580" font-size="17" fill="#e2e8f0" text-anchor="middle">endpoints</text>
+  <text x="1155" y="610" font-size="17" fill="#e2e8f0" text-anchor="middle">with validation</text>
+
+  <!-- ================= COLUMN 4: DATABASE & STORAGE ================= -->
+  <!-- Box 5: SQLite -->
+  <rect x="1450" y="370" width="280" height="150" fill="#0c201e" fill-opacity="0.8" stroke="#7d3434" stroke-width="2.2" rx="4"/>
+  <text x="1590" y="435" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">SQLite</text>
+  <text x="1590" y="475" font-size="18" fill="#e2e8f0" text-anchor="middle">edubridge.db</text>
+
+  <!-- Box 6: Target Portals -->
+  <rect x="1450" y="570" width="280" height="150" fill="#0c201e" fill-opacity="0.8" stroke="#7d3434" stroke-width="2.2" rx="4"/>
+  <text x="1590" y="618" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">Target Portals</text>
+  <text x="1590" y="652" font-size="16" fill="#e2e8f0" text-anchor="middle">Verified platforms:</text>
+  <text x="1590" y="678" font-size="16" fill="#e2e8f0" text-anchor="middle">W3Schools, NPTEL,</text>
+  <text x="1590" y="702" font-size="16" fill="#e2e8f0" text-anchor="middle">LeetCode, Compilers</text>
+
+  <!-- ================= CONNECTING ARROWS ================= -->
+  <!-- Arrow 1: Rural Student -> Frontend -->
+  <line x1="400" y1="445" x2="505" y2="490" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 2: Administrator -> Frontend -->
+  <line x1="400" y1="645" x2="505" y2="600" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 3: Frontend -> Express REST API -->
+  <line x1="860" y1="545" x2="975" y2="545" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 4: Express REST API -> SQLite -->
+  <line x1="1330" y1="490" x2="1445" y2="445" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 5: Express REST API -> Target Portals -->
+  <line x1="1330" y1="600" x2="1445" y2="645" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+
+</svg>
