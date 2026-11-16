@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduBridge - System Architecture Diagram Viewer & Exporter</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .action-bar {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e293b;
+      padding: 15px 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #334155;
+    }
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+    button, a.btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    button:hover, a.btn:hover {
+      background: #1d4ed8;
+    }
+    .btn-secondary {
+      background: #334155;
+      color: #f8fafc;
+    }
+    .btn-secondary:hover {
+      background: #475569;
+    }
+    .preview-card {
+      width: 100%;
+      max-width: 1400px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+      padding: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    .preview-card img, .preview-card svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+    .instructions {
+      max-width: 1200px;
+      margin-top: 20px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 18px 24px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+    .instructions strong {
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar">
+    <div>
+      <h2 style="font-size:18px; color:white; margin-bottom:3px;">EduBridge System Architecture Diagram</h2>
+      <p style="font-size:12px; color:#94a3b8;">High-resolution vector diagram ready for PowerPoint slide insertion</p>
+    </div>
+    <div class="btn-group">
+      <button onclick="downloadPNG()">
+        <span>📥</span> Download as PNG (for PPT)
+      </button>
+      <a href="/system_architecture.svg" download="EduBridge_System_Architecture.svg" class="btn btn-secondary">
+        <span>📄</span> Download SVG (Vector)
+      </a>
+      <a href="/presentation.html" class="btn btn-secondary">
+        <span>📊</span> Open Full PPT Deck
+      </a>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <img id="svgImg" src="/system_architecture.svg" alt="EduBridge System Architecture Diagram" />
+  </div>
+
+  <div class="instructions">
+    <strong>💡 How to insert into your PowerPoint Presentation:</strong><br>
+    1. Click the blue <strong>"Download as PNG"</strong> button above (or download the SVG file).<br>
+    2. Open your PowerPoint slide deck $\rightarrow$ Go to <strong>Slide 8 (System Architecture)</strong>.<br>
+    3. Click the top ribbon: <strong>Insert</strong> &gt; <strong>Pictures</strong> &gt; <strong>This Device...</strong><br>
+    4. Select your downloaded <code>EduBridge_System_Architecture.png</code> (or <code>.svg</code>) file and position it in the slide.<br>
+    <em>Tip: Both PNG and SVG files maintain ultra-sharp resolution on college auditorium projectors!</em>
+  </div>
+
+  <canvas id="exportCanvas" style="display:none;"></canvas>
+
+  <script>
+    function downloadPNG() {
+      const img = document.getElementById('svgImg');
+      const canvas = document.getElementById('exportCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      canvas.width = 1600;
+      canvas.height = 900;
+      
+      const newImg = new Image();
+      newImg.crossOrigin = "anonymous";
+      newImg.src = "/system_architecture.svg";
+      
+      newImg.onload = function() {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(newImg, 0, 0, 1600, 900);
+        
+        const a = document.createElement('a');
+        a.download = "EduBridge_System_Architecture.png";
+        a.href = canvas.toDataURL("image/png");
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+    }
+  </script>
+</body>
+</html>

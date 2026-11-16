@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduBridge System Architecture Diagram</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1600px;
+      height: 900px;
+      background: #f8fafc;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 40px;
+      overflow: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+    .title-box h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1e3a8a;
+      letter-spacing: -0.5px;
+    }
+    .title-box p {
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .badge {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .diagram-container {
+      display: grid;
+      grid-template-columns: 280px 40px 480px 40px 320px 40px 300px;
+      align-items: center;
+      flex: 1;
+    }
+
+    .tier {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      padding: 18px;
+      height: 720px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .tier-header {
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f1f5f9;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tier-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+    }
+    .tier-title {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tier-subtitle {
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    /* Client Tier */
+    .tier-client { border-top: 5px solid #2563eb; }
+    .tier-client .tier-icon { background: #2563eb; }
+    .tier-client .tier-title { color: #1e3a8a; }
+
+    /* Backend Tier */
+    .tier-backend { border-top: 5px solid #059669; }
+    .tier-backend .tier-icon { background: #059669; }
+    .tier-backend .tier-title { color: #065f46; }
+
+    /* Database Tier */
+    .tier-db { border-top: 5px solid #d97706; }
+    .tier-db .tier-icon { background: #d97706; }
+    .tier-db .tier-title { color: #92400e; }
+
+    /* External Tier */
+    .tier-ext { border-top: 5px solid #7c3aed; }
+    .tier-ext .tier-icon { background: #7c3aed; }
+    .tier-ext .tier-title { color: #5b21b6; }
+
+    /* Cards inside tiers */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      transition: all 0.2s;
+    }
+    .card-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-desc {
+      font-size: 10.5px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .pill {
+      background: #e2e8f0;
+      color: #334155;
+      font-size: 9.5px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .pill-blue { background: #dbeafe; color: #1e40af; }
+    .pill-green { background: #d1fae5; color: #065f46; }
+    .pill-amber { background: #fef3c7; color: #92400e; }
+    .pill-purple { background: #ede9fe; color: #5b21b6; }
+
+    /* Flow connector arrows */
+    .connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+    }
+    .arrow-line {
+      width: 100%;
+      height: 2px;
+      background: #94a3b8;
+      position: relative;
+    }
+    .arrow-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #475569;
+      background: #f8fafc;
+      padding: 2px 4px;
+      border-radius: 4px;
+      text-align: center;
+      white-space: nowrap;
+      margin-bottom: 4px;
+    }
+    .arrow-head-right {
+      position: absolute;
+      right: 0;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 6px solid #64748b;
+    }
+    .arrow-head-left {
+      position: absolute;
+      left: 0;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 6px solid #64748b;
+    }
+
+    /* Sub-box in Backend */
+    .sub-section {
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+    }
+    .sub-section-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #059669;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Title Bar -->
+  <div class="header">
+    <div class="title-box">
+      <h1>EduBridge: 3-Tier System Architecture</h1>
+      <p>A Study on Digital Education Awareness in Rural Villages | High-Level Component & Data Flow Diagram</p>
+    </div>
+    <div class="badge">Academic Review Model</div>
+  </div>
+
+  <!-- Diagram Grid -->
+  <div class="diagram-container">
+
+    <!-- 1. CLIENT / PRESENTATION TIER -->
+    <div class="tier tier-client">
+      <div class="tier-header">
+        <div class="tier-icon">1</div>
+        <div>
+          <div class="tier-title">Client Layer</div>
+          <div class="tier-subtitle">Presentation & User Interaction</div>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-title">📱 Rural Learners & Devices</div>
+          <div class="card-desc">Budget 4G/5G Smartphones, Tablets, College Labs, Low-Bandwidth Browsers.</div>
+          <div class="pill-group">
+            <span class="pill pill-blue">Mobile-First</span>
+            <span class="pill pill-blue">Zero-Install</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🌐 User Interfaces (14 Pages)</div>
+          <div class="card-desc">Semantic HTML5 & Vanilla CSS3. Instant rendering without heavy JS frameworks.</div>
+          <div class="pill-group">
+            <span class="pill">explore.html</span>
+            <span class="pill">dashboard.html</span>
+            <span class="pill">admin.html</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🔄 Bilingual Engine (i18n)</div>
+          <div class="card-desc">English & Telugu (తెలుగు) toggle without page reload. Regional guidance.</div>
+          <div class="pill-group">
+            <span class="pill pill-blue">Noto Sans Telugu</span>
+            <span class="pill pill-blue">Client State</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🔐 Client Auth Controller</div>
+          <div class="card-desc">Stores session cookies, manages JWT state, protects student routes.</div>
+          <div class="pill-group">
+            <span class="pill">auth.js</span>
+            <span class="pill">app.js</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📚 Rural Literacy Modules</div>
+          <div class="card-desc">11 Offline-ready lessons: Data saving (360p), ₹30 OTG keyboard coding, scam alerts.</div>
+          <div class="pill-group">
+            <span class="pill pill-blue">digital-literacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTOR 1 -> 2 -->
+    <div class="connector">
+      <div class="arrow-label">HTTP / HTTPS</div>
+      <div class="arrow-line">
+        <div class="arrow-head-right"></div>
+        <div class="arrow-head-left"></div>
+      </div>
+      <div class="arrow-label" style="margin-top:6px;">REST JSON</div>
+    </div>
+
+    <!-- 2. APPLICATION / BACKEND TIER -->
+    <div class="tier tier-backend">
+      <div class="tier-header">
+        <div class="tier-icon">2</div>
+        <div>
+          <div class="tier-title">Application Layer</div>
+          <div class="tier-subtitle">Node.js & Express.js REST Engine</div>
+        </div>
+      </div>
+      <div class="card-list">
+        
+        <!-- Middleware Box -->
+        <div class="sub-section">
+          <div class="sub-section-title">Security & Middleware</div>
+          <div style="font-size:10px; color:#475569; line-height:1.4;">
+            • <strong>CORS:</strong> Origin control & credentials<br>
+            • <strong>Cookie-Parser:</strong> Secure HTTP-only tokens<br>
+            • <strong>JWT Verifier:</strong> Stateless Role-based validation (Admin/Student)<br>
+            • <strong>Static Server:</strong> Serves /public assets with caching
+          </div>
+        </div>
+
+        <!-- REST API Controllers -->
+        <div class="card">
+          <div class="card-title">🔑 Authentication Service</div>
+          <div class="card-desc">POST /api/auth/register, login, logout, me. Bcrypt password hashing (10 salt rounds).</div>
+          <div class="pill-group">
+            <span class="pill pill-green">Bcrypt.js</span>
+            <span class="pill pill-green">JWT Tokens</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📦 Resource Catalog API</div>
+          <div class="card-desc">GET /api/resources, multi-filter by Domain, Pricing (Free/Audit), Telugu text search.</div>
+          <div class="pill-group">
+            <span class="pill pill-green">Filter Engine</span>
+            <span class="pill pill-green">47+ Platforms</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">⭐ Bookmarks & Visits API</div>
+          <div class="card-desc">Track outbound click telemetry, record student recently visited list, toggle bookmarks.</div>
+          <div class="pill-group">
+            <span class="pill pill-green">Telemetry</span>
+            <span class="pill pill-green">User History</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🛠️ Admin Management API</div>
+          <div class="card-desc">Protected CRUD operations: Add/Edit/Delete platforms, feedback resolution, metrics.</div>
+          <div class="pill-group">
+            <span class="pill pill-green">RBAC Gated</span>
+            <span class="pill pill-green">Analytics</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONNECTOR 2 -> 3 -->
+    <div class="connector">
+      <div class="arrow-label">SQL / Sync</div>
+      <div class="arrow-line">
+        <div class="arrow-head-right"></div>
+        <div class="arrow-head-left"></div>
+      </div>
+      <div class="arrow-label" style="margin-top:6px;">Records</div>
+    </div>
+
+    <!-- 3. DATABASE / DATA PERSISTENCE TIER -->
+    <div class="tier tier-db">
+      <div class="tier-header">
+        <div class="tier-icon">3</div>
+        <div>
+          <div class="tier-title">Database Layer</div>
+          <div class="tier-subtitle">Embedded Relational Persistence</div>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-title">⚡ node:sqlite Engine</div>
+          <div class="card-desc">Node.js 22 built-in DatabaseSync. Zero network overhead, microsecond query speeds.</div>
+          <div class="pill-group">
+            <span class="pill pill-amber">edubridge.db</span>
+            <span class="pill pill-amber">Zero Server RAM</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">👤 users Table</div>
+          <div class="card-desc">id, name, email, password_hash, role (student/admin), village, college, study_level.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📚 resources Table</div>
+          <div class="card-desc">id, name, url, category, skill_level, pricing_model, description, telugu_description, clicks.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📌 bookmarks Table</div>
+          <div class="card-desc">Composite Primary Key (user_id, resource_id) with CASCADE deletion integrity.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📊 visits & feedback</div>
+          <div class="card-desc">Redirection logs, timestamp telemetry, student issue reports & resolution states.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTOR 2 -> 4 -->
+    <div class="connector">
+      <div class="arrow-label">Outbound</div>
+      <div class="arrow-line">
+        <div class="arrow-head-right"></div>
+      </div>
+      <div class="arrow-label" style="margin-top:6px;">Redirect</div>
+    </div>
+
+    <!-- 4. EXTERNAL EDUCATIONAL ECOSYSTEM -->
+    <div class="tier tier-ext">
+      <div class="tier-header">
+        <div class="tier-icon">4</div>
+        <div>
+          <div class="tier-title">Target Platforms</div>
+          <div class="tier-subtitle">Verified External Discovery</div>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-title">💻 Code & In-Browser IDEs</div>
+          <div class="card-desc">W3Schools, GeeksforGeeks, Programiz, Replit (Cloud Coding on Mobile).</div>
+          <div class="pill-group">
+            <span class="pill pill-purple">₹0 Compilers</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🏆 Competitive Practice</div>
+          <div class="card-desc">LeetCode, HackerRank, CodeChef, Codeforces for placement readiness.</div>
+          <div class="pill-group">
+            <span class="pill pill-purple">DSA Mastery</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📜 Govt & Free Certifications</div>
+          <div class="card-desc">NPTEL, SWAYAM, Infosys Springboard, IBM SkillsBuild, Coursera Aid.</div>
+          <div class="pill-group">
+            <span class="pill pill-purple">Govt Recognized</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🎓 B.Tech Engineering Hub</div>
+          <div class="card-desc">Gate Smashers, Abdul Bari, Neso Academy semester playlists.</div>
+          <div class="pill-group">
+            <span class="pill pill-purple">12 Subjects</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🎯 Aptitude & Career Roadmaps</div>
+          <div class="card-desc">IndiaBIX, PrepInsta, Roadmap.sh (9 step-by-step career blueprints).</div>
+          <div class="pill-group">
+            <span class="pill pill-purple">Placement Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

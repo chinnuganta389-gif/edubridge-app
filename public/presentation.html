@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduBridge - Project Presentation (Slide Deck)</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    .deck-header {
+      background: #1e293b;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      color: #60a5fa;
+      font-size: 1.1rem;
+    }
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-ctrl {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #475569;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-ctrl:hover {
+      background: #475569;
+      border-color: #60a5fa;
+      color: #ffffff;
+    }
+    .slide-progress {
+      font-weight: 600;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      min-width: 70px;
+      text-align: center;
+    }
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    .slide-card {
+      background: #ffffff;
+      color: #0f172a;
+      width: 100%;
+      max-width: 1050px;
+      min-height: 600px;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      padding: 3rem 3.5rem;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      animation: fadeIn 0.3s ease-out;
+    }
+    .slide-card.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      align-self: flex-start;
+    }
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+    .slide-subtitle {
+      font-size: 1.25rem;
+      color: #475569;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    .slide-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #334155;
+      flex: 1;
+    }
+    .bullet-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.8rem;
+    }
+    .bullet-list li::before {
+      content: "•";
+      color: #2563eb;
+      font-size: 1.6rem;
+      position: absolute;
+      left: 0;
+      top: -0.25rem;
+    }
+    .bullet-list strong {
+      color: #0f172a;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .speaker-notes-box {
+      margin-top: 1.5rem;
+      background: #f8fafc;
+      border-left: 4px solid #2563eb;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      color: #334155;
+      display: none;
+    }
+    .speaker-notes-box.show {
+      display: block;
+    }
+    .speaker-notes-box strong {
+      color: #1e3a8a;
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .deck-nav-bar {
+      background: #1e293b;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid #334155;
+    }
+    .key-tip {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-left: 1.5rem;
+    }
+    .key-tip kbd {
+      background: #0f172a;
+      border: 1px solid #475569;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: #f8fafc;
+    }
+    @media print {
+      body { background: white; color: black; }
+      .deck-header, .deck-nav-bar, .key-tip { display: none !important; }
+      .slide-stage { padding: 0; }
+      .slide-card {
+        display: flex !important;
+        page-break-after: always;
+        min-height: 95vh;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 2rem;
+      }
+      .speaker-notes-box { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="deck-header">
+    <div class="brand-area">
+      <span>🎓 EduBridge</span>
+      <span style="color:#94a3b8; font-weight:400; font-size:0.9rem;">| Project Defense Slide Deck</span>
+    </div>
+    <div class="deck-controls">
+      <button class="btn-ctrl" id="btnNotesToggle" onclick="toggleNotes()">
+        <span>📝</span> <span id="notesLabel">Show Speaker Notes (N)</span>
+      </button>
+      <button class="btn-ctrl" onclick="window.print()">
+        <span>🖨️</span> Print / Save PDF
+      </button>
+      <button class="btn-ctrl" onclick="toggleFullScreen()">
+        <span>⛶</span> Fullscreen (F)
+      </button>
+      <a href="/" class="btn-ctrl" style="text-decoration:none;">
+        <span>🏠</span> Back to App
+      </a>
+    </div>
+  </header>
+
+  <!-- Slide Stage -->
+  <main class="slide-stage" id="slideStage">
+
+    <!-- SLIDE 1 -->
+    <div class="slide-card active" data-slide="1">
+      <div>
+        <span class="slide-tag">Academic Capstone Presentation</span>
+        <h1 class="slide-title" style="font-size: 2.8rem; margin-bottom: 0.5rem; color:#1e3a8a;">EduBridge</h1>
+        <p class="slide-subtitle" style="font-size: 1.4rem; color: #2563eb; margin-bottom: 1.5rem;">
+          A Study on Digital Education Awareness in Rural Villages
+        </p>
+        <div style="background:#eff6ff; padding:1.25rem 1.5rem; border-radius:12px; margin-bottom:1.5rem; border:1px solid #bfdbfe;">
+          <p style="font-weight:700; color:#1e40af; font-size:1.1rem; margin-bottom:0.25rem;">
+            One Platform. Unlimited Learning Opportunities.
+          </p>
+          <p style="color:#3b82f6; font-weight:500;">Learn. Practice. Grow. (తెలుగు & English)</p>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; color:#475569; font-size:0.95rem;">
+          <div>
+            <p><strong>Presented by:</strong> [Your Name]</p>
+            <p><strong>Roll Number:</strong> [Your Hall Ticket No.]</p>
+            <p><strong>Department:</strong> Computer Science & Engineering</p>
+          </div>
+          <div>
+            <p><strong>Institution:</strong> [Your College / Polytechnic Name]</p>
+            <p><strong>Project Guide:</strong> [Faculty Guide Name & Designation]</p>
+            <p><strong>Academic Year:</strong> 2026</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Good morning respected evaluators, professors, and fellow students. Today, I am proud to present our project titled 'EduBridge: A Study on Digital Education Awareness in Rural Villages'. This project addresses the critical awareness gap in rural technical education by centralizing world-class free learning platforms into an accessible, bilingual gateway."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 1 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide-card" data-slide="2">
+      <div>
+        <span class="slide-tag">Context & Background</span>
+        <h2 class="slide-title">Introduction & Social Context</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>Rapid Mobile Penetration:</strong> Rural India has experienced exponential 4G/5G mobile internet adoption and budget smartphone ownership over recent years.</li>
+          <li><strong>The Missing Link:</strong> Despite high-speed connectivity, rural youth primarily utilize smartphones for social media and video streaming, unaware of high-quality educational portals.</li>
+          <li><strong>The Education Divide:</strong> Urban students benefit from peer mentorship, coaching centers, and awareness of portals like W3Schools, GeeksforGeeks, HackerRank, and SWAYAM.</li>
+          <li><strong>EduBridge Mission:</strong> To bridge this digital information gap by creating a free, bilingual discovery hub connecting rural students directly to global learning resources.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "While hardware and connectivity have reached rural villages, digital educational awareness has lagged behind. Many students do not know that platforms like W3Schools, LeetCode, or Harvard's CS50 exist and are completely free. EduBridge was born to solve this exact problem."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 2 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide-card" data-slide="3">
+      <div>
+        <span class="slide-tag">Problem Analysis</span>
+        <h2 class="slide-title">Problem Statement & Rural Challenges</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>Information Asymmetry:</strong> Millions of free educational tutorials, textbooks, and compiler tools exist online, but rural students do not know where to start or who to trust.</li>
+          <li><strong>High Financial Barriers:</strong> Commercial coaching institutes charge heavy fees (₹20,000 to ₹50,000) for basic programming lessons that are freely available online.</li>
+          <li><strong>Language Hesitation:</strong> Technical English creates fear and hesitation among rural regional-medium students.</li>
+          <li><strong>Hardware Misconception:</strong> A widespread belief that learning programming strictly requires an expensive laptop, preventing mobile-only learners from writing code.</li>
+          <li><strong>Lack of Structured Roadmaps:</strong> Confusion regarding skill sequences for career roles like Full Stack, Python, or Data Analytics.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Through our rural survey, we identified four major bottlenecks: lack of awareness, fear of English, the false belief that programming requires an expensive PC, and absence of mentorship. Students waste money or give up because they lack guidance."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 3 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide-card" data-slide="4">
+      <div>
+        <span class="slide-tag">Goals & Boundaries</span>
+        <h2 class="slide-title">Project Objectives & Scope</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>Centralized Discovery:</strong> Build a single-window portal cataloging 47+ verified, genuine educational platforms.</li>
+          <li><strong>Bilingual Orientation:</strong> Provide parallel Telugu (తెలుగు) summaries, explanations, and advice for beginners.</li>
+          <li><strong>Academic Integration:</strong> Organize 12 foundational B.Tech CSE/IT subjects with curated lecture playlists (Gate Smashers, Abdul Bari, Neso Academy).</li>
+          <li><strong>Transparency in Pricing:</strong> Clearly classify resources into 100% Free, Free Audit, and Govt-sponsored (NPTEL, Infosys Springboard, IBM).</li>
+          <li><strong>Career Roadmaps:</strong> Deliver 9 step-by-step career path guides with beginner project ideas.</li>
+          <li><strong>Scope Boundary:</strong> EduBridge is an awareness & resource discovery gateway, not a replacement LMS. It redirects students directly to official providers.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Our primary objective is to empower rural students with self-paced learning. EduBridge does not duplicate external platforms; instead, it organizes, clarifies, and points students directly to official verified portals with Telugu guidance."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 4 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide-card" data-slide="5">
+      <div>
+        <span class="slide-tag">Architecture</span>
+        <h2 class="slide-title">System Architecture & Workflow</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>3-Tier Web Architecture:</strong> Presentation Layer (HTML5/CSS3/JS), Application Server (Node.js/Express), and Data Persistence (Embedded SQLite).</li>
+          <li><strong>High-Performance Embedded Database:</strong> Built-in <code>node:sqlite</code> (DatabaseSync) providing zero-latency queries without separate database server processes.</li>
+          <li><strong>Stateless Token Security:</strong> JWT (JSON Web Tokens) with HTTP-only cookies for student authentication and role-based access control.</li>
+          <li><strong>Responsive Client:</strong> Mobile-first responsive CSS tailored for budget 4G smartphones and low bandwidth usage.</li>
+          <li><strong>Direct Traffic Redirection:</strong> Tracks student visits and redirects directly to genuine external platforms in isolated browser tabs.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "EduBridge is designed to run efficiently on both desktop and low-end mobile devices. The architecture uses Express for REST APIs and Node's modern built-in SQLite engine, ensuring rapid startup and zero external database overhead."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 5 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide-card" data-slide="6">
+      <div>
+        <span class="slide-tag">Modules</span>
+        <h2 class="slide-title">Core Modules of EduBridge</h2>
+        <ul class="bullet-list slide-body" style="font-size:0.95rem; gap:0.6rem;">
+          <li><strong>1. Global Resource Catalog (explore.html):</strong> Real-time search, multi-filter by Category, Difficulty Level, and Pricing Model.</li>
+          <li><strong>2. Programming Hub (programming.html):</strong> 12 languages/domains (C, C++, Java, Python, Web, SQL, DSA) with in-browser online compiler recommendations.</li>
+          <li><strong>3. Coding Practice Portal (coding-practice.html):</strong> LeetCode, HackerRank, CodeChef, Codeforces ranked by beginner-to-advanced progression.</li>
+          <li><strong>4. B.Tech Engineering Hub (btech-subjects.html):</strong> 12 core semester subjects with top YouTube playlists and semester exam scoring strategies.</li>
+          <li><strong>5. Free Courses & Certifications (free-courses.html):</strong> Direct links to NPTEL, SWAYAM, IBM SkillsBuild, and Coursera Financial Aid guide.</li>
+          <li><strong>6. Aptitude & Placement Prep (aptitude.html):</strong> IndiaBIX, PrepInsta, and built-in Speed Math formula cheatsheet.</li>
+          <li><strong>7. Career Roadmaps (career-guidance.html):</strong> 9 software job roadmaps with required skills, practice platforms, and project ideas.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "EduBridge covers the entire student journey: from learning their first line of Python in their phone browser, to cracking semester exams, obtaining free IBM/NPTEL certificates, and preparing for campus placement aptitude tests."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 6 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide-card" data-slide="7">
+      <div>
+        <span class="slide-tag">Research Innovations</span>
+        <h2 class="slide-title">Special Features for Rural Beginners</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>Bilingual Toggle Engine (English & Telugu):</strong> Instant one-click language switcher without page reload, providing native Telugu explanations for complex concepts.</li>
+          <li><strong>Digital Literacy Handbook (digital-literacy.html):</strong> 11 guided lessons:
+            <div style="margin-top:0.4rem; padding-left:1.5rem; color:#475569; font-size:0.95rem;">
+              • Setting up professional Gmail accounts<br>
+              • Video data saving techniques (360p/480p vs 1080p)<br>
+              • Coding on mobile phones with ₹30 OTG keyboards<br>
+              • Identifying genuine government portals (.ac.in / .gov.in) vs scam sites<br>
+              • Cyber hygiene, strong passwords, and OTP security
+            </div>
+          </li>
+          <li><strong>Zero-Hardware Barrier:</strong> Actively promotes browser-based cloud IDEs (Replit, Programiz) so students don't need a laptop to learn programming.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Our research highlighted that rural students needed more than just links; they needed basic digital orientation. Our 11 Digital Literacy modules teach students how to save mobile data, create professional emails, and stay safe from cyber fraud."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 7 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide-card" data-slide="8">
+      <div>
+        <span class="slide-tag">User Access</span>
+        <h2 class="slide-title">User Roles & Interactive Portals</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>1. Public Visitor (Guest):</strong>
+            <p style="margin-left:1.5rem; color:#475569;">Freely browse, search, and filter all 47+ educational platforms with zero registration friction.</p>
+          </li>
+          <li><strong>2. Registered Student Portal (dashboard.html):</strong>
+            <p style="margin-left:1.5rem; color:#475569;">Personalized greeting with village and college details, interactive bookmark manager to save favorite platforms, and recent platform visit timeline.</p>
+          </li>
+          <li><strong>3. Administrator Console (admin.html):</strong>
+            <p style="margin-left:1.5rem; color:#475569;">Full CRUD operations (Add, Edit, Delete platforms with English & Telugu text), real-time analytical dashboard (platforms, students, link clicks), and student feedback tracking.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "We implemented a 3-tier user system. Visitors can freely browse without friction. Students get a personalized dashboard with bookmarks and history. Administrators have a dedicated console to manage verified listings and review student feedback."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 8 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide-card" data-slide="9">
+      <div>
+        <span class="slide-tag">Data Layer</span>
+        <h2 class="slide-title">Database Schema & Entity Relationships</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>users:</strong> <code>id, name, email, password_hash (bcrypt), role, village, college, study_level, preferred_language, interests, created_at</code></li>
+          <li><strong>resources:</strong> <code>id, name, url, category, subcategories, skill_level, pricing_model, description, telugu_description, is_featured, click_count</code></li>
+          <li><strong>bookmarks:</strong> Composite Unique <code>(user_id, resource_id)</code> with foreign key cascading deletion.</li>
+          <li><strong>visits:</strong> Tracking student redirection history and timestamp logs for analytical reporting.</li>
+          <li><strong>feedback:</strong> Student submissions, broken link reports, message content, and status tracking (pending/reviewed/resolved).</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "The database schema is lightweight and relational, enforcing foreign key integrity and password hashing using bcrypt. The embedded SQLite database ensures instant initialization and portable deployments."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 9 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide-card" data-slide="10">
+      <div>
+        <span class="slide-tag">Implementation</span>
+        <h2 class="slide-title">Technology Stack & Tools Used</h2>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;" class="slide-body">
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:10px; border:1px solid #e2e8f0;">
+            <h3 style="color:#1e3a8a; font-size:1.1rem; margin-bottom:0.75rem;">Frontend Stack</h3>
+            <ul style="list-style-type:circle; padding-left:1.2rem; color:#475569; font-size:0.95rem; line-height:1.6;">
+              <li>Semantic HTML5 & Accessible Elements</li>
+              <li>Vanilla CSS3 Design System with Variables</li>
+              <li>Client-side JavaScript (ES6+) & Fetch API</li>
+              <li>Custom i18n Telugu Translation Engine</li>
+              <li>Mobile-responsive media queries</li>
+            </ul>
+          </div>
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:10px; border:1px solid #e2e8f0;">
+            <h3 style="color:#1e3a8a; font-size:1.1rem; margin-bottom:0.75rem;">Backend & Persistence</h3>
+            <ul style="list-style-type:circle; padding-left:1.2rem; color:#475569; font-size:0.95rem; line-height:1.6;">
+              <li>Node.js (v22+ / v24) Runtime</li>
+              <li>Express.js 5.3 RESTful Framework</li>
+              <li>Embedded SQLite (<code>node:sqlite</code>)</li>
+              <li>Bcrypt.js password hashing</li>
+              <li>JSON Web Tokens (JWT) & Cookies</li>
+              <li>Git / GitHub / Render.com Cloud</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Our stack is chosen for maximum speed and zero bloat. By avoiding heavy frontend frameworks like React or Angular, pages load in milliseconds even over rural 3G/4G connections with low bandwidth consumption."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 10 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 11 -->
+    <div class="slide-card" data-slide="11">
+      <div>
+        <span class="slide-tag">Outcomes</span>
+        <h2 class="slide-title">Key Outcomes & Community Impact</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>Democratizing Higher Technical Education:</strong> Gives rural youth the exact same educational access as students in premier metropolitan institutions.</li>
+          <li><strong>Elimination of Coaching Dependency:</strong> Empowers students to learn programming and aptitude at ₹0 cost from top global educators.</li>
+          <li><strong>Practical Employability:</strong> Direct exposure to industry-standard problem solving (HackerRank, LeetCode) enhances campus placement conversion rates.</li>
+          <li><strong>Regional Confidence:</strong> Telugu explanations remove the psychological fear of English-only technical portals.</li>
+          <li><strong>Academic Upliftment:</strong> Curated video playlists improve B.Tech semester pass percentages in challenging subjects like Automata, OS, and Compiler Design.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "The measurable outcome of EduBridge is confidence, awareness, and employability. When a student in a rural village realizes they can practice coding for free and get certified by IBM or IITs, their entire career trajectory changes."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 11 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 12 -->
+    <div class="slide-card" data-slide="12">
+      <div>
+        <span class="slide-tag">Vision</span>
+        <h2 class="slide-title">Future Scope & Enhancements</h2>
+        <ul class="bullet-list slide-body">
+          <li><strong>Progressive Web App (PWA):</strong> Enable offline reading of notes and cheat sheets in areas with intermittent connectivity.</li>
+          <li><strong>Telugu Voice Assistant:</strong> AI-powered voice search in Telugu for students with low typing fluency.</li>
+          <li><strong>Community Mentorship Network:</strong> Connect rural college students with senior software engineers from nearby districts.</li>
+          <li><strong>Gram Panchayat Kiosk Integration:</strong> Deploy lightweight touch-screen learning kiosks in village digital centers and community halls.</li>
+          <li><strong>Mobile App Release:</strong> Publish dedicated Android APK on Google Play Store for one-tap mobile learning.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Looking forward, we aim to transform EduBridge into a Progressive Web App with offline caching, add Telugu voice-based navigation, and integrate physical digital kiosks in rural Gram Panchayats."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 12 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 13 -->
+    <div class="slide-card" data-slide="13">
+      <div>
+        <span class="slide-tag">Summary</span>
+        <h2 class="slide-title">Conclusion</h2>
+        <ul class="bullet-list slide-body">
+          <li>Digital awareness is the true catalyst for educational equality in 21st-century India.</li>
+          <li>EduBridge successfully bridges the gap between available free educational resources and rural students who need them most.</li>
+          <li>With bilingual navigation, mobile-friendly design, curated syllabus roadmaps, and zero-cost credentials, EduBridge provides a comprehensive, sustainable solution.</li>
+          <li>In conclusion, EduBridge proves that with the right guidance, a smartphone in a rural village can become a gateway to world-class learning and career success.</li>
+        </ul>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "To conclude, technology is only as powerful as the awareness surrounding it. EduBridge bridges this final mile, empowering rural learners to transition from passive consumers of entertainment into skilled developers and professionals."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 13 of 14</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 14 -->
+    <div class="slide-card" data-slide="14">
+      <div style="text-align:center; padding: 2rem 0;">
+        <span class="slide-tag">Conclusion & Defense</span>
+        <h2 class="slide-title" style="font-size:3.5rem; color:#1e3a8a; margin-bottom:1rem;">Thank You!</h2>
+        <p style="font-size:1.3rem; color:#2563eb; font-weight:600; margin-bottom:2rem;">
+          "Bridging the Digital Divide Through Awareness and Opportunity."
+        </p>
+        <div style="background:#f8fafc; display:inline-block; padding:1.5rem 2.5rem; border-radius:12px; border:1px solid #e2e8f0; text-align:left; margin-bottom:2rem;">
+          <p style="margin-bottom:0.5rem;"><strong>GitHub Repository:</strong> <a href="https://github.com/chinnuganta389-gif/edubridge-app" target="_blank" style="color:#2563eb;">github.com/chinnuganta389-gif/edubridge-app</a></p>
+          <p style="margin-bottom:0.5rem;"><strong>Live Deployment:</strong> <a href="https://edubridge-app.onrender.com" target="_blank" style="color:#2563eb;">edubridge-app.onrender.com</a></p>
+          <p><strong>Local Host:</strong> <code style="background:#e2e8f0; padding:2px 6px; border-radius:4px;">http://localhost:3000</code></p>
+        </div>
+        <p style="font-size:1.2rem; font-weight:700; color:#1e293b;">Questions & Discussion Welcome</p>
+      </div>
+      <div class="speaker-notes-box">
+        <strong>Speaker Script:</strong>
+        "Thank you for your valuable time and attention. I am now open to any questions, suggestions, or feedback from the committee."
+      </div>
+      <div class="slide-footer">
+        <span>EduBridge - Academic Defense</span>
+        <span>Slide 14 of 14</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <footer class="deck-nav-bar">
+    <button class="btn-ctrl" onclick="prevSlide()">◀ Previous</button>
+    <div class="slide-progress" id="slideProgress">Slide 1 / 14</div>
+    <button class="btn-ctrl" onclick="nextSlide()">Next ▶</button>
+    <span class="key-tip">Keyboard shortcuts: <kbd>→</kbd> Next, <kbd>←</kbd> Prev, <kbd>N</kbd> Notes, <kbd>F</kbd> Fullscreen</span>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 14;
+    const slides = document.querySelectorAll('.slide-card');
+    const progressEl = document.getElementById('slideProgress');
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx + 1 === currentSlide);
+      });
+      progressEl.textContent = `Slide ${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function toggleNotes() {
+      const notes = document.querySelectorAll('.speaker-notes-box');
+      const label = document.getElementById('notesLabel');
+      const isVisible = notes[0].classList.contains('show');
+      notes.forEach(n => n.classList.toggle('show', !isVisible));
+      label.textContent = !isVisible ? 'Hide Speaker Notes (N)' : 'Show Speaker Notes (N)';
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key === 'n' || e.key === 'N') {
+        toggleNotes();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      } else if (e.key === 'Home') {
+        showSlide(1);
+      } else if (e.key === 'End') {
+        showSlide(totalSlides);
+      }
+    });
+
+    // Touch swipe support for mobile presentations
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+    document.addEventListener('touchend', e => {
+      let touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextSlide();
+      if (touchEndX - touchStartX > 50) prevSlide();
+    }, false);
+  </script>
+</body>
+</html>

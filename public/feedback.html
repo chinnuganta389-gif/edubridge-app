@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback, Suggestions & FAQs - EduBridge</title>
+  <meta name="description" content="Suggest educational websites, report broken links, and explore frequently asked questions on EduBridge for rural students.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-question {
+      padding: 1.15rem 1.35rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gray-900);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .faq-question:hover {
+      background: var(--gray-50);
+    }
+    .faq-answer {
+      padding: 0 1.35rem 1.15rem;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+      display: none;
+      border-top: 1px solid var(--gray-100);
+      padding-top: 0.85rem;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+    .faq-toggle {
+      transition: transform 0.2s ease;
+      color: var(--primary-600);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-notice-bar">
+    <div class="container">
+      <span class="project-title-badge">RESEARCH PROJECT</span>
+      <strong data-i18n="banner_notice">A STUDY ON DIGITAL EDUCATION AWARENESS IN RURAL VILLAGES</strong>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="brand-wrapper">
+        <a href="index.html" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+          <div class="brand-logo">EB</div>
+          <div class="brand-text">
+            <h1>Edu<span>Bridge</span></h1>
+            <p class="brand-tagline">Learn. Practice. Grow.</p>
+          </div>
+        </a>
+      </div>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="explore.html" class="nav-link" data-i18n="nav_explore">Explore Resources</a></li>
+          <li><a href="programming.html" class="nav-link" data-i18n="nav_programming">Programming</a></li>
+          <li><a href="coding-practice.html" class="nav-link" data-i18n="nav_coding">Coding Practice</a></li>
+          <li><a href="btech-subjects.html" class="nav-link" data-i18n="nav_btech">B.Tech Subjects</a></li>
+          <li><a href="free-courses.html" class="nav-link" data-i18n="nav_courses">Free Courses</a></li>
+          <li><a href="career-guidance.html" class="nav-link" data-i18n="nav_career">Career Guidance</a></li>
+          <li><a href="digital-literacy.html" class="nav-link" data-i18n="nav_literacy">Digital Literacy</a></li>
+          <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-toggle-btn">🌐 తెలుగు (TE)</button>
+        <div id="navAuthActions">
+          <a href="login.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login / Register</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section style="background:linear-gradient(135deg, #eff6ff, #fff7ed); border-bottom:1px solid var(--gray-200); padding: 2.5rem 0 2rem;">
+    <div class="container">
+      <span class="section-tag">COMMUNITY CONTRIBUTION</span>
+      <h1 style="font-size:2.25rem; font-weight:800; color:var(--gray-900); margin-bottom:0.5rem;">Student Feedback, Suggestions & FAQs</h1>
+      <p style="font-size:1.05rem; color:var(--gray-600); max-width:850px; line-height:1.6;">
+        EduBridge grows with the rural student community. Suggest valuable free learning websites you’ve discovered, report broken links, or request new academic topics.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <main class="section">
+    <div class="container">
+      <div class="feedback-layout">
+
+        <!-- Submission Form (Prompt #14) -->
+        <div class="form-card" style="margin:0; max-width:none;">
+          <h3 style="font-size:1.4rem; font-weight:800; color:var(--gray-900); margin-bottom:0.5rem;">Submit Suggestion or Feedback</h3>
+          <p style="font-size:0.88rem; color:var(--gray-600); margin-bottom:1.5rem;">Help other village students discover top-tier educational materials.</p>
+
+          <form id="studentFeedbackForm" onsubmit="handleFeedbackSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Submission Category *</label>
+              <select id="fbType" class="form-control" required>
+                <option value="suggestion">Suggest a Useful Free Educational Website</option>
+                <option value="broken_link">Report a Broken or Inactive Link</option>
+                <option value="category_request">Request a New Learning Subject / Category</option>
+                <option value="feedback">General Application Feedback & Experience</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Platform / Website Name or Topic Title</label>
+              <input type="text" id="fbTitle" class="form-control" placeholder="e.g. Free Telugu Python Video Tutorials">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Website URL (if suggesting or reporting)</label>
+              <input type="url" id="fbUrl" class="form-control" placeholder="https://www.example.com">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Your Name (Optional)</label>
+              <input type="text" id="fbName" class="form-control" placeholder="Your name or village name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Your Email (Optional, if you wish to receive a reply)</label>
+              <input type="email" id="fbEmail" class="form-control" placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Details & Explanation *</label>
+              <textarea id="fbMessage" class="form-control" rows="4" required placeholder="Explain why this resource is useful for rural students, or describe the broken link you encountered..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:1.25rem;">
+              Submit to EduBridge Research Cell ➔
+            </button>
+          </form>
+        </div>
+
+        <!-- Helpful FAQs for Rural Students (Prompt #14) -->
+        <div>
+          <h3 style="font-size:1.4rem; font-weight:800; color:var(--gray-900); margin-bottom:0.5rem;">Frequently Asked Questions</h3>
+          <p style="font-size:0.88rem; color:var(--gray-600); margin-bottom:1.5rem;">Common queries rural students ask about digital education:</p>
+
+          <div class="faq-item active">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Do I need an expensive laptop to start learning coding?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <strong>No!</strong> You can write and run C, Python, Java, and HTML code straight from your mobile browser using platforms like <strong>Programiz Online Compiler</strong> or <strong>Replit</strong> without downloading software. A standard smartphone with 4G internet is sufficient to master basic programming.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Are all the websites listed on EduBridge really free?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <strong>Yes!</strong> Every platform on EduBridge is vetted. Platforms like W3Schools, GeeksforGeeks, freeCodeCamp, IBM SkillsBuild, and Infosys Springboard provide 100% free learning. On Coursera, you can use the "Audit" option to learn for free.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>Can I really get a software job by self-studying from these websites?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              <strong>Absolutely!</strong> Many engineering graduates from rural polytechnics and Tier-3 colleges secure IT positions at TCS, Infosys, and product startups by practicing problems on HackerRank and LeetCode, building portfolio projects, and following our structured Career Roadmaps.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>How do I get free certificates on Coursera?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              Next to the "Enroll" button on any Coursera course, click the small link labeled <strong>"Financial Aid Available"</strong>. Fill out the application explaining that you are a rural Indian student committed to acquiring skills. Coursera approves eligible student applications within 15 days at zero charge.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>How does EduBridge help my college exam preparation?</span>
+              <span class="faq-toggle">▼</span>
+            </div>
+            <div class="faq-answer">
+              Visit our <strong>B.Tech Subjects</strong> section. We have organized top playlists from Gate Smashers, Abdul Bari, and Neso Academy that break down university syllabus units (OS, DBMS, CN, Automata, Compiler) into simple 15-minute conceptual videos.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p data-i18n="footer_rights">
+          EduBridge - Developed for "A Study on Digital Education Awareness in Rural Villages". All external educational platform names, trademarks, and logos belong to their respective organizations.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function toggleFaq(el) {
+      const parent = el.closest('.faq-item');
+      parent.classList.toggle('active');
+    }
+
+    async function handleFeedbackSubmit(e) {
+      e.preventDefault();
+      const type = document.getElementById('fbType').value;
+      const title = document.getElementById('fbTitle').value.trim();
+      const url = document.getElementById('fbUrl').value.trim();
+      const user_name = document.getElementById('fbName').value.trim();
+      const user_email = document.getElementById('fbEmail').value.trim();
+      const message = document.getElementById('fbMessage').value.trim();
+
+      const token = localStorage.getItem('edubridge_token');
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      try {
+        const res = await fetch('/api/feedback', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({ type, title, url, user_name, user_email, message })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Submission failed');
+
+        EduApp.toast(data.message, 'success');
+        document.getElementById('studentFeedbackForm').reset();
+      } catch (err) {
+        EduApp.toast(err.message, 'error');
+      }
+    }
+  </script>
+</body>
+</html>
